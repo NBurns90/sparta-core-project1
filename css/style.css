@@ -1,73 +1,60 @@
-#puzzleBoard {
-	display: block;
-	text-align: center;
-	margin-top: 100px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#solutionSlab {
-	background: green;
+.puzzleBoard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 600px;
+  min-height: 600px;
 }
 
-.row {
-	display: block;
+.items {
+  display: inline;
+  line-height: 100px;
+  width: 200px;
+  height: 200px;
+  background: url(https://static1.squarespace.com/static/53e4ea80e4b0a79b40480ad4/t/58ee5afb20099ef86fedc583/1492015878387/Rick_and_morty_dan_mumford4.jpg?format=original);
+  background-size: 300%;
 }
 
-.col {
-  border: 1px solid white;
-  display: inline-block;
-	height: 100px;
-	margin-right: -6px;
-  margin-top: -6px;
-  padding: 0px;
-  width: 100px;
-  transition: .2s;
+.item1 {
+  background-position: top left;
 }
 
-.col:hover {
-  background: #666;
+.item2 {
+  background-position: top;
 }
 
-.col:active {
-  background: #E20057;
+.item3 {
+  background-position: top right;
 }
 
-.one {
-	/* BACKGROUND IMAGE 1 */
-	background: red;
+.item4 {
+  background-position: center left;
 }
 
-.two {
-	background: green;
+.item5 {
+  background-position: center;
 }
 
-.three {
-	background: purple;
+.item6 {
+  background-position: center right;
 }
 
-.four {
-	background: yellow;
+.item7 {
+  background-position: bottom left;
 }
 
-.five {
-	background: grey;
+.item8 {
+  background-position: bottom;
 }
 
-.six {
-	background: blue;
-}
-
-.seven {
-	background: orange;
-}
-
-.eight {
-	background: white;
-}
-
-.nine {
-	background: cyan;
-}
-
-.blankSpace {
-	background: black;
+.item {
+  background-position: bottom right;
 }
