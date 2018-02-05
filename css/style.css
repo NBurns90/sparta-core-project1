@@ -1,9 +1,7 @@
 #puzzleBoard {
-	width: 600px;
-	height: 600px;
-	margin-left: 10%;
-	margin-top: 5%;
-	background: black;
+	display: block;
+	text-align: center;
+	margin-top: 100px;
 }
 
 #solutionSlab {
@@ -11,5 +9,65 @@
 }
 
 .row {
-	display: inline-block;
+	display: block;
+}
+
+.col {
+  border: 1px solid white;
+  display: inline-block;
+	height: 100px;
+	margin-right: -6px;
+  margin-top: -6px;
+  padding: 0px;
+  width: 100px;
+  transition: .2s;
+}
+
+.col:hover {
+  background: #666;
+}
+
+.col:active {
+  background: #E20057;
+}
+
+.one {
+	/* BACKGROUND IMAGE 1 */
+	background: red;
+}
+
+.two {
+	background: green;
+}
+
+.three {
+	background: purple;
+}
+
+.four {
+	background: yellow;
+}
+
+.five {
+	background: grey;
+}
+
+.six {
+	background: blue;
+}
+
+.seven {
+	background: orange;
+}
+
+.eight {
+	background: white;
+}
+
+.nine {
+	background: cyan;
+}
+
+.blankSpace {
+	background: black;
 }
