@@ -8,8 +8,8 @@ $(document).ready(function(){
 
     // define the size of the array and it's values
     var puzzleValues = [1, 2, 3, 4, 5, 6, 7, 8, ""],
-        $puzzleBoard = $(".puzzleBoard");
-    $puzzleBoard.html("");
+        puzzleBoard = $(".puzzleBoard");
+    puzzleBoard.html("");
 
     // loop through the array and apply each div element
     for (var i=0; i<9; i++) {
@@ -17,7 +17,7 @@ $(document).ready(function(){
       var num = random(puzzleValues);
       newDiv.html(num);
       newDiv.addClass("items item"+num);
-      $puzzleBoard.append(newDiv);
+      puzzleBoard.append(newDiv);
     }
 
     // applies the blank css to the random tile
@@ -26,6 +26,10 @@ $(document).ready(function(){
 
     // calls the function move which checks tiles for legal moves
     move();
+
+    //starts the stopwatch when game is open
+    startTimer();
+
   }
 
   // on each move taken, check to see if the game has been won
@@ -48,7 +52,8 @@ $(document).ready(function(){
       // sets a timeout period for the alert
       setTimeout(function() {
         alert("You won !");
-      }, 2000);
+        // stop the timer
+      }, 200);
     }
   }
 
@@ -188,5 +193,23 @@ $(document).ready(function(){
       check();
     });
   }
+
+var min=0;
+var sec=0;
+var interval;
+
+function startTimer() {
+  interval = self.setInterval(function disp(), 1000);
+}
+
+function disp(){
+  if(sec < 59) {
+    sec++
+    console.log(sec);
+  } else {
+    min++
+    console.log(min);
+  }
+}
 
 });
