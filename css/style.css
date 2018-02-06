@@ -29,11 +29,11 @@
 }
 
 #seconds {
-  margin-left: 35px;
   font-size: 2em;
 }
 
-#tens {
+#minutes {
+  margin-left: 35px;
   font-size: 2em;
 }
 

@@ -27,7 +27,7 @@ $(document).ready(function(){
     // calls the function move which checks tiles for legal moves
     move();
 
-    //starts the stopwatch when game is open
+    //starts the stopwatch when game is opened
     startTimer();
 
   }
@@ -194,22 +194,47 @@ $(document).ready(function(){
     });
   }
 
+// define variables for interval timer
 var min=0;
 var sec=0;
 var interval;
 
+// function for defining interval
 function startTimer() {
-  interval = self.setInterval(function disp(), 1000);
+  interval = setInterval(function() {disp()}, 1000);
 }
 
+// function for displaying and counting up the timer
 function disp(){
+  // when timer is less than 1 minute, count up seconds
   if(sec < 59) {
     sec++
-    console.log(sec);
+    // if secs <10 passes an extra zero infront of the display to keep format consistent
+    if (sec < 10) {
+      // alter span text
+      $('#seconds').text('0' + sec);
+    }
+    else {
+      // alter span text
+      $('#seconds').text(sec);
+    }
+    console.log("sec" + sec);
   } else {
+    // set sec to zero and add 1 to min also setting sec display to 00
+    // when seconds accumulates to 60, add 1 to minute
+    sec = 0;
+    $('#seconds').text('0' + sec);
     min++
-    console.log(min);
+    if (min < 10) {
+      // alter span text
+      $('#minutes').text('0' + min);
+    }
+    else {
+      // alter span text
+      $('#minutes').text(min);
+    }
+    console.log("min" + min);
+    }
   }
-}
 
 });
