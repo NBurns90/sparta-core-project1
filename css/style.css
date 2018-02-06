@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.scoreContainer {
+  margin-top: 20%;
+  width: 400px;
+  height: 475px;
+  border-width: medium;
+  border-color: grey;
+  border-style: dashed;
+}
+
+.scoreHeader h1 {
+  padding-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  font-family: fantasy;
+  text-decoration: underline;
+}
+
+.timer h4 {
+  text-align: left;
+  padding: 30px;
+  font-size: 36px;
+}
+
+#seconds {
+  font-size: 2em;
+}
+
+#minutes {
+  margin-left: 35px;
+  font-size: 2em;
+}
+
+.turns h4 {
+  text-align: left;
+  padding: 30px;
+  font-size: 36px;
+}
+
+.score h4 {
+  text-align: left;
+  padding: 30px;
+  font-size: 36px;
+}
+
+.puzzleBoardContainer {
+  width: 700px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+/* css for puzzle */
+.puzzleBoard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 620px;
+  min-height: 620px;
+  cursor: move;
+  border-width: 10px;
+  border-style: ridge;
+  border-color: black;
+  box-shadow: 0px 0px 50px 25px rgba(0,0,0,0.6);
+}
+
+.items {
+  display: inline;
+  line-height: 100px;
+  width: 200px;
+  height: 200px;
+  background: url(https://static1.squarespace.com/static/53e4ea80e4b0a79b40480ad4/t/58ee5afb20099ef86fedc583/1492015878387/Rick_and_morty_dan_mumford4.jpg?format=original);
+  background-size: 300%;
+}
+
+.item1 {
+  background-position: top left;
+}
+
+.item2 {
+  background-position: top;
+}
+
+.item3 {
+  background-position: top right;
+}
+
+.item4 {
+  background-position: center left;
+}
+
+.item5 {
+  background-position: center;
+}
+
+.item6 {
+  background-position: center right;
+}
+
+.item7 {
+  background-position: bottom left;
+}
+
+.item8 {
+  background-position: bottom;
+}
+
+.item {
+  background-position: bottom right;
+}
+/* end of css for puzzle */
