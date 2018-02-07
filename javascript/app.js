@@ -42,6 +42,13 @@ $(document).ready(function(){
         checkArr.push(i+1);
         // outputs which tiles are in the correct place
         console.log(checkArr);
+        // check on score if 0 then stop timer
+        if (score <= 0) {
+          stopTimer();
+          console.log('You Lose');
+          //add a modal to lock up page and announce loss
+
+        }
       }
     }
 
@@ -51,8 +58,10 @@ $(document).ready(function(){
 
       // sets a timeout period for the alert
       setTimeout(function() {
+        //create modal
         alert("You won !");
         // stop the timer
+        stopTimer();
       }, 200);
     }
   }
@@ -85,9 +94,11 @@ $(document).ready(function(){
       if ($(this).is($(".items").eq(0))) {
         if ($(".items").eq(1).hasClass("item")) {
           swapTiles($(this), $(".items").eq(1));
+          turnCounter(1);
         }
         else if ($(".items").eq(3).hasClass("item")) {
           swapTiles($(this), $(".items").eq(3));
+          turnCounter(1);
         }
       }
 
@@ -95,12 +106,15 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(1))) {
         if ($(".items").eq(0).hasClass("item")) {
           swapTiles($(this), $(".items").eq(0));
+          turnCounter(1);
         }
         else if ($(".items").eq(2).hasClass("item")) {
           swapTiles($(this), $(".items").eq(2));
+          turnCounter(1);
         }
         else if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
+          turnCounter(1);
         }
       }
 
@@ -108,9 +122,11 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(2))) {
         if ($(".items").eq(1).hasClass("item")) {
           swapTiles($(this), $(".items").eq(1));
+          turnCounter(1);
         }
         else if ($(".items").eq(5).hasClass("item")) {
           swapTiles($(this), $(".items").eq(5));
+          turnCounter(1);
         }
       }
 
@@ -118,12 +134,15 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(3))) {
         if ($(".items").eq(0).hasClass("item")) {
           swapTiles($(this), $(".items").eq(0));
+          turnCounter(1);
         }
         else if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
+          turnCounter(1);
         }
         else if ($(".items").eq(6).hasClass("item")) {
           swapTiles($(this), $(".items").eq(6));
+          turnCounter(1);
         }
       }
 
@@ -131,15 +150,19 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(4))) {
         if ($(".items").eq(1).hasClass("item")) {
           swapTiles($(this), $(".items").eq(1));
+          turnCounter(1);
         }
         else if ($(".items").eq(3).hasClass("item")) {
           swapTiles($(this), $(".items").eq(3));
+          turnCounter(1);
         }
         else if ($(".items").eq(5).hasClass("item")) {
           swapTiles($(this), $(".items").eq(5));
+          turnCounter(1);
         }
         else if ($(".items").eq(7).hasClass("item")) {
           swapTiles($(this), $(".items").eq(7));
+          turnCounter(1);
         }
       }
 
@@ -147,12 +170,15 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(5))) {
         if ($(".items").eq(2).hasClass("item")) {
           swapTiles($(this), $(".items").eq(2));
+          turnCounter(1);
         }
         else if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
+          turnCounter(1);
         }
         else if ($(".items").eq(8).hasClass("item")) {
           swapTiles($(this), $(".items").eq(8));
+          turnCounter(1);
         }
       }
 
@@ -160,9 +186,11 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(6))) {
         if ($(".items").eq(3).hasClass("item")) {
           swapTiles($(this), $(".items").eq(3));
+          turnCounter(1);
         }
         else if ($(".items").eq(7).hasClass("item")) {
           swapTiles($(this), $(".items").eq(7));
+          turnCounter(1);
         }
       }
 
@@ -170,12 +198,15 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(7))) {
         if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
+          turnCounter(1);
         }
         else if ($(".items").eq(6).hasClass("item")) {
           swapTiles($(this), $(".items").eq(6));
+          turnCounter(1);
         }
         else if ($(".items").eq(8).hasClass("item")) {
           swapTiles($(this), $(".items").eq(8));
+          turnCounter(1);
         }
       }
 
@@ -183,9 +214,11 @@ $(document).ready(function(){
       else if ($(this).is($(".items").eq(8))) {
         if ($(".items").eq(5).hasClass("item")) {
           swapTiles($(this), $(".items").eq(5));
+          turnCounter(1);
         }
         else if ($(".items").eq(7).hasClass("item")) {
           swapTiles($(this), $(".items").eq(7));
+          turnCounter(1);
         }
       }
 
@@ -194,6 +227,8 @@ $(document).ready(function(){
     });
   }
 
+// Scoreboard Functionality
+//---------------------------------------------
 // define variables for interval timer
 var min=0;
 var sec=0;
@@ -202,6 +237,11 @@ var interval;
 // function for defining interval
 function startTimer() {
   interval = setInterval(function() {disp()}, 1000);
+}
+
+// function for stopping the timer
+function stopTimer() {
+  interval = clearInterval(interval);
 }
 
 // function for displaying and counting up the timer
@@ -218,7 +258,7 @@ function disp(){
       // alter span text
       $('#seconds').text(sec);
     }
-    console.log("sec" + sec);
+    // console.log("sec" + sec);
   } else {
     // set sec to zero and add 1 to min also setting sec display to 00
     // when seconds accumulates to 60, add 1 to minute
@@ -233,8 +273,31 @@ function disp(){
       // alter span text
       $('#minutes').text(min);
     }
-    console.log("min" + min);
+    // console.log("min" + min);
     }
+    console.log(score);
+  }
+
+  // Turn Counter
+  // ------------
+  //
+  var turns = 0;
+
+  function turnCounter(oneTurn) {
+    turns = turns + oneTurn;
+    $('#turns').text(turns);
+    console.log('turns' + turns);
+    scoreCalc();
+  };
+
+  // Score Calculation
+  // -----------------
+  //
+  var score = 100;
+
+  function scoreCalc() {
+      score = Math.floor(score - ((sec+(min*60))*4)*(turns/75));
+      $('#score').text(score);
   }
 
 });

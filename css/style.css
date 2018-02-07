@@ -14,7 +14,7 @@
 }
 
 .scoreHeader h1 {
-  padding-top: 10px;
+  padding-top: 5px;
   text-align: center;
   font-weight: bold;
   font-size: 50px;
@@ -24,29 +24,39 @@
 
 .timer h4 {
   text-align: left;
-  padding: 30px;
+  padding: 15px;
   font-size: 36px;
 }
 
 #seconds {
-  font-size: 2em;
+  font-size: 54px;
 }
 
 #minutes {
-  margin-left: 35px;
-  font-size: 2em;
+  margin-left: 25px;
+  font-size: 54px;
 }
 
 .turns h4 {
   text-align: left;
-  padding: 30px;
+  padding: 15px;
   font-size: 36px;
+}
+
+#turns {
+  font-size: 54px;
+  margin-left: 25px;
 }
 
 .score h4 {
   text-align: left;
-  padding: 30px;
+  padding: 15px;
   font-size: 36px;
+}
+
+#score {
+  font-size: 54px;
+  margin-left: 25px;
 }
 
 .puzzleBoardContainer {
