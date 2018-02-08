@@ -1,11 +1,60 @@
 $(document).ready(function(){
 
+  // set globals variables for modals
+  var modalLose = $('#modalLose');
+  var modalWin = $('#modalWin');
+  var modalInstructions = $('#modalInstructions');
+
   // calls function to start the game
-  startGame();
+  $('#btnStartGame').on('click', function(e) {
+    startGame();
+    $('#btnStartGame').hide();
+  });
+
+  // calls function to reset the reset the game
+  $('#btnRestartGame').on('click', function(e) {
+    location.reload();
+  });
+
+  // audio Functionality
+  // tile slide
+  function playTileSlide() {
+    var tileSlideAudio = new Audio('./audio/tileslide.mp3');
+    tileSlideAudio.load();
+    tileSlideAudio.play();
+    tileSlideAudio.volume = 0.5;
+  }
+
+  // lose audio
+  function playLoseAudio() {
+    var loseAudio = new Audio('./audio/dumbastheycome.mp3');
+    loseAudio.play();
+    loseAudio.volume = 0.5;
+  }
+
+  // win audio
+  function playWinAudio() {
+    var winAudio = new Audio('./audio/ilikewhatyougot.mp3');
+    winAudio.play();
+    winAudio.volume = 0.3;
+  }
+
+  // music
+  var musicAudio = new Audio('./audio/MoonmenMusic.mp3');
+
+  // play
+  function playMusic() {
+    musicAudio.volume = 0.5;
+    musicAudio.play();
+  }
+
+  // stop
+  function stopMusic() {
+    musicAudio.pause();
+  }
 
   // random values in boxes; insert values and add classnames
   function startGame() {
-
     // define the size of the array and it's values
     var puzzleValues = [1, 2, 3, 4, 5, 6, 7, 8, ""],
         puzzleBoard = $(".puzzleBoard");
@@ -30,6 +79,8 @@ $(document).ready(function(){
     //starts the stopwatch when game is opened
     startTimer();
 
+    //starts the music
+    playMusic();
   }
 
   // on each move taken, check to see if the game has been won
@@ -41,28 +92,28 @@ $(document).ready(function(){
       if ($(".items").eq(i).hasClass("item"+(i+1))) {
         checkArr.push(i+1);
         // outputs which tiles are in the correct place
-        console.log(checkArr);
+        // console.log(checkArr);
         // check on score if 0 then stop timer
-        if (score <= 0) {
+        if (score <= 0 ) {
           stopTimer();
-          console.log('You Lose');
-          //add a modal to lock up page and announce loss
-
+          modalLose.modal('show');
+          stopMusic();
+          playLoseAudio();
+          // console.log('You Lose');
         }
       }
     }
 
     // if the array is the correct order alert the player he has won
     if (checkArr.length === 8) {
-      $(".item").css("background-image", "url(https://static1.squarespace.com/static/53e4ea80e4b0a79b40480ad4/t/58ee5afb20099ef86fedc583/1492015878387/Rick_and_morty_dan_mumford4.jpg?format=original)");
+      $(".item").css("background-image", "url(https://cdn.pastemagazine.com/www/articles/rick%20and%20morty%20the%20ricks%20must%20be%20crazy%20square.jpg)");
 
-      // sets a timeout period for the alert
-      setTimeout(function() {
-        //create modal
-        alert("You won !");
-        // stop the timer
-        stopTimer();
-      }, 200);
+      // do this when the game has been won
+      $('.modalScore').html("Score: " + score + " <br>Time taken: " + min + " minutes and " + sec + " seconds " + "<br>Turns taken: " + turns);
+      modalWin.modal('show');
+      stopMusic();
+      playWinAudio();
+      stopTimer();
     }
   }
 
@@ -95,10 +146,12 @@ $(document).ready(function(){
         if ($(".items").eq(1).hasClass("item")) {
           swapTiles($(this), $(".items").eq(1));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(3).hasClass("item")) {
           swapTiles($(this), $(".items").eq(3));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -107,14 +160,17 @@ $(document).ready(function(){
         if ($(".items").eq(0).hasClass("item")) {
           swapTiles($(this), $(".items").eq(0));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(2).hasClass("item")) {
           swapTiles($(this), $(".items").eq(2));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -123,10 +179,12 @@ $(document).ready(function(){
         if ($(".items").eq(1).hasClass("item")) {
           swapTiles($(this), $(".items").eq(1));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(5).hasClass("item")) {
           swapTiles($(this), $(".items").eq(5));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -135,14 +193,17 @@ $(document).ready(function(){
         if ($(".items").eq(0).hasClass("item")) {
           swapTiles($(this), $(".items").eq(0));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(6).hasClass("item")) {
           swapTiles($(this), $(".items").eq(6));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -151,18 +212,22 @@ $(document).ready(function(){
         if ($(".items").eq(1).hasClass("item")) {
           swapTiles($(this), $(".items").eq(1));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(3).hasClass("item")) {
           swapTiles($(this), $(".items").eq(3));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(5).hasClass("item")) {
           swapTiles($(this), $(".items").eq(5));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(7).hasClass("item")) {
           swapTiles($(this), $(".items").eq(7));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -171,14 +236,17 @@ $(document).ready(function(){
         if ($(".items").eq(2).hasClass("item")) {
           swapTiles($(this), $(".items").eq(2));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(8).hasClass("item")) {
           swapTiles($(this), $(".items").eq(8));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -187,10 +255,12 @@ $(document).ready(function(){
         if ($(".items").eq(3).hasClass("item")) {
           swapTiles($(this), $(".items").eq(3));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(7).hasClass("item")) {
           swapTiles($(this), $(".items").eq(7));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -199,14 +269,17 @@ $(document).ready(function(){
         if ($(".items").eq(4).hasClass("item")) {
           swapTiles($(this), $(".items").eq(4));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(6).hasClass("item")) {
           swapTiles($(this), $(".items").eq(6));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(8).hasClass("item")) {
           swapTiles($(this), $(".items").eq(8));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -215,10 +288,12 @@ $(document).ready(function(){
         if ($(".items").eq(5).hasClass("item")) {
           swapTiles($(this), $(".items").eq(5));
           turnCounter(1);
+          playTileSlide();
         }
         else if ($(".items").eq(7).hasClass("item")) {
           swapTiles($(this), $(".items").eq(7));
           turnCounter(1);
+          playTileSlide();
         }
       }
 
@@ -227,55 +302,56 @@ $(document).ready(function(){
     });
   }
 
-// Scoreboard Functionality
-//---------------------------------------------
-// define variables for interval timer
-var min=0;
-var sec=0;
-var interval;
 
-// function for defining interval
-function startTimer() {
-  interval = setInterval(function() {disp()}, 1000);
-}
+  // Scoreboard Functionality
+  //---------------------------------------------
+  // define variables for interval timer
+  var min = 0;
+  var sec = 0;
+  var interval;
 
-// function for stopping the timer
-function stopTimer() {
-  interval = clearInterval(interval);
-}
+  // function for defining interval
+  function startTimer() {
+    interval = setInterval(function() {
+      disp()
+    }, 1000);
+  }
 
-// function for displaying and counting up the timer
-function disp(){
-  // when timer is less than 1 minute, count up seconds
-  if(sec < 59) {
-    sec++
-    // if secs <10 passes an extra zero infront of the display to keep format consistent
-    if (sec < 10) {
-      // alter span text
+  // function for stopping the timer
+  function stopTimer() {
+    interval = clearInterval(interval);
+  }
+
+  // function for displaying and counting up the timer
+  function disp() {
+    // when timer is less than 1 minute, count up seconds
+    if (sec < 59) {
+      sec++
+      // if secs <10 passes an extra zero infront of the display to keep format consistent
+      if (sec < 10) {
+        // alter span text
+        $('#seconds').text('0' + sec);
+      } else {
+        // alter span text
+        $('#seconds').text(sec);
+      }
+      // console.log("sec" + sec);
+    } else {
+      // set sec to zero and add 1 to min also setting sec display to 00
+      // when seconds accumulates to 60, add 1 to minute
+      sec = 0;
       $('#seconds').text('0' + sec);
+      min++
+      if (min < 10) {
+        // alter span text
+        $('#minutes').text('0' + min);
+      } else {
+        // alter span text
+        $('#minutes').text(min);
+      }
+      // console.log("min" + min);
     }
-    else {
-      // alter span text
-      $('#seconds').text(sec);
-    }
-    // console.log("sec" + sec);
-  } else {
-    // set sec to zero and add 1 to min also setting sec display to 00
-    // when seconds accumulates to 60, add 1 to minute
-    sec = 0;
-    $('#seconds').text('0' + sec);
-    min++
-    if (min < 10) {
-      // alter span text
-      $('#minutes').text('0' + min);
-    }
-    else {
-      // alter span text
-      $('#minutes').text(min);
-    }
-    // console.log("min" + min);
-    }
-    console.log(score);
+    // console.log(score);
   }
 
   // Turn Counter
@@ -286,18 +362,83 @@ function disp(){
   function turnCounter(oneTurn) {
     turns = turns + oneTurn;
     $('#turns').text(turns);
-    console.log('turns' + turns);
+    // console.log('turns' + turns);
     scoreCalc();
   };
+
 
   // Score Calculation
   // -----------------
   //
-  var score = 100;
+  var score = 100000;
 
   function scoreCalc() {
-      score = Math.floor(score - ((sec+(min*60))*4)*(turns/75));
+    if (score <=0) {
+      score = 0;
       $('#score').text(score);
+    } else {
+        score = Math.floor(score - ((sec+(min*60))*8)*(turns/60));
+      }
+    $('#score').text(score);
   }
+
+  // Modal Handlers
+  // -------------
+  //
+  $('#btnModalRestart').on('click', function(e) {
+    location.reload();
+  });
+
+  $('#btnModalPlayAgain').on('click', function(e) {
+    location.reload();
+  });
+
+  $('#btnRules').on('click', function(e) {
+    modalInstructions.modal('show');
+  });
+
+  $('#btnModalClose').on('click', function(e) {
+    modalInstructions.modal('hide');
+  });
+
+  // Cheat Box
+  // ---------
+  //
+  var cheatCode = '';
+
+  document.addEventListener("keydown", function(e) {
+    if (e.which == 73) {
+      $('.cheatForm').css('display', 'inline-block');
+      // console.log('Works');
+    };
+
+    if(e.which == 72) {
+      $('.cheatForm').css('display', 'none');
+    };
+
+    if (e.which == 13) {
+  		cheatCode = $('#cheatCode').val();
+      $('.cheatCode').css('display', 'none');
+      if (cheatCode == 'glipglop') {
+        stopTimer();
+        modalLose.modal('show');
+        stopMusic();
+        playLoseAudio();
+        // console.log('You Lose');
+      }
+      else if (cheatCode == 'wubalubadubdub') {
+        $('.modalScore').html("Score: " + score + " <br>Time taken: " + min + " minutes and " + sec + " seconds " + "<br>Turns taken: " + turns);
+        modalWin.modal('show');
+        stopMusic();
+        playWinAudio();
+        stopTimer();
+        // console.log('You Win');
+      }
+      else {
+        location.reload();
+        // console.log('Invalid Input');
+      }
+    }
+  });
 
 });

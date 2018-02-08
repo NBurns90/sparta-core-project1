@@ -4,26 +4,35 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url('../images/background.png');
+  background-size: 100%;
+}
+
 .scoreContainer {
-  margin-top: 20%;
+  /* margin-top: 160px; */
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
   width: 400px;
   height: 475px;
   border-width: medium;
-  border-color: grey;
-  border-style: dashed;
+  border-color: black;
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: GetShifty;
 }
 
 .scoreHeader h1 {
-  padding-top: 5px;
+  padding-top: 10px;
   text-align: center;
   font-weight: bold;
   font-size: 50px;
-  font-family: fantasy;
   text-decoration: underline;
 }
 
 .timer h4 {
-  text-align: left;
+  text-align: center;
   padding: 15px;
   font-size: 36px;
 }
@@ -38,7 +47,7 @@
 }
 
 .turns h4 {
-  text-align: left;
+  text-align: center;
   padding: 15px;
   font-size: 36px;
 }
@@ -49,7 +58,7 @@
 }
 
 .score h4 {
-  text-align: left;
+  text-align: center;
   padding: 15px;
   font-size: 36px;
 }
@@ -59,9 +68,26 @@
   margin-left: 25px;
 }
 
+.restart {
+  padding: 10px;
+  text-align: center;
+}
+
+.btn-restart {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-start {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .puzzleBoardContainer {
   width: 700px;
-  margin-top: 50px;
+  margin-top: 90px;
   margin-left: 50px;
 }
 
@@ -73,7 +99,7 @@
   margin-right: auto;
   width: 620px;
   min-height: 620px;
-  cursor: move;
+  cursor: pointer;
   border-width: 10px;
   border-style: ridge;
   border-color: black;
@@ -85,7 +111,7 @@
   line-height: 100px;
   width: 200px;
   height: 200px;
-  background: url(https://static1.squarespace.com/static/53e4ea80e4b0a79b40480ad4/t/58ee5afb20099ef86fedc583/1492015878387/Rick_and_morty_dan_mumford4.jpg?format=original);
+  background: url('https://cdn.pastemagazine.com/www/articles/rick%20and%20morty%20the%20ricks%20must%20be%20crazy%20square.jpg');
   background-size: 300%;
 }
 
@@ -123,5 +149,81 @@
 
 .item {
   background-position: bottom right;
+  background-color: white;
 }
 /* end of css for puzzle */
+
+/* modals */
+.btnRules {
+  margin-top: 130px;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+}
+
+.modalLose {
+  display: none;
+  width: 80%;
+  height: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+.modalWin {
+  display: none;
+  width: 80%;
+  height: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+.modalInstructions {
+  display: none;
+  width: 50%;
+  height: 60%;
+  margin: auto;
+}
+
+.modalContent h1 {
+  margin: 0px;
+  padding: 90px 25px 90px 25px;
+  text-align: center;
+  font-size: 80px;
+}
+
+.modalContent h3 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 50px;
+}
+
+.modalInst {
+  list-style-image: url('../images/meeseeksBox.jpg');
+  margin-left: 45px;
+}
+
+.modalInst li {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.modalScore {
+  padding-bottom: 30px;
+  font-size: 26px;
+}
+
+/* cheat for styles */
+.cheatForm{
+  margin-left: 190px;
+  margin-top: 10px;
+  width: 200px;
+  height: 30px;
+  background: white;
+  display: none;
+}
+
+.cheatForm input {
+  width: 200px;
+  height: 30px;
+  background: white;
+}
