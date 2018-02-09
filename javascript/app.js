@@ -92,14 +92,12 @@ $(document).ready(function(){
       if ($(".items").eq(i).hasClass("item"+(i+1))) {
         checkArr.push(i+1);
         // outputs which tiles are in the correct place
-        // console.log(checkArr);
         // check on score if 0 then stop timer
         if (score <= 0 ) {
           stopTimer();
           modalLose.modal('show');
           stopMusic();
           playLoseAudio();
-          // console.log('You Lose');
         }
       }
     }
@@ -335,7 +333,6 @@ $(document).ready(function(){
         // alter span text
         $('#seconds').text(sec);
       }
-      // console.log("sec" + sec);
     } else {
       // set sec to zero and add 1 to min also setting sec display to 00
       // when seconds accumulates to 60, add 1 to minute
@@ -349,9 +346,7 @@ $(document).ready(function(){
         // alter span text
         $('#minutes').text(min);
       }
-      // console.log("min" + min);
     }
-    // console.log(score);
   }
 
   // Turn Counter
@@ -362,7 +357,6 @@ $(document).ready(function(){
   function turnCounter(oneTurn) {
     turns = turns + oneTurn;
     $('#turns').text(turns);
-    // console.log('turns' + turns);
     scoreCalc();
   };
 
@@ -409,7 +403,6 @@ $(document).ready(function(){
   document.addEventListener("keydown", function(e) {
     if (e.which == 73) {
       $('.cheatForm').css('display', 'inline-block');
-      // console.log('Works');
     };
 
     if(e.which == 72) {
@@ -424,7 +417,6 @@ $(document).ready(function(){
         modalLose.modal('show');
         stopMusic();
         playLoseAudio();
-        // console.log('You Lose');
       }
       else if (cheatCode == 'wubalubadubdub') {
         $('.modalScore').html("Score: " + score + " <br>Time taken: " + min + " minutes and " + sec + " seconds " + "<br>Turns taken: " + turns);
@@ -432,11 +424,9 @@ $(document).ready(function(){
         stopMusic();
         playWinAudio();
         stopTimer();
-        // console.log('You Win');
       }
       else {
         location.reload();
-        // console.log('Invalid Input');
       }
     }
   });

@@ -65,7 +65,7 @@ To keep track of my user stories I used Trello.  Each user story was tracked and
 
 This is my Trello board as of current:
 
-![image](images/trello.png)
+![image](images/Trello.png)
 
 #### Sprint 1
 
